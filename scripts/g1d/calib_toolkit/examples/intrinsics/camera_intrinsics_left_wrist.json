@@ -1,0 +1,64 @@
+{
+ "format": "g1d_camera_intrinsics_v1",
+ "camera": "left_wrist",
+ "resolution": [
+  640,
+  480
+ ],
+ "model": "opencv",
+ "K": [
+  [
+   315.7210648425411,
+   0.0,
+   316.8845483420157
+  ],
+  [
+   0.0,
+   315.56647752124945,
+   236.6639890967462
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "dist": [
+  0.09730146031962031,
+  -0.103292579140522,
+  -0.000683188297293736,
+  0.0020018456368905077,
+  0.030356214492832902
+ ],
+ "intrinsics_sigma": {
+  "fx": 1.7573340891067342,
+  "fy": 1.7899359703744178,
+  "cx": 1.3591775653453224,
+  "cy": 1.3344982432752752,
+  "k1": 0.002,
+  "k2": 0.002,
+  "p1": 0.0002,
+  "p2": 0.0002,
+  "k3": 0.0005
+ },
+ "rms_px": 0.44363828909426317,
+ "heldout_rms_px": 0.36940765380859375,
+ "n_images": 71,
+ "board": {
+  "type": "chessboard",
+  "squares_x": 10,
+  "squares_y": 7,
+  "square_length_m": 0.04
+ },
+ "stream": {
+  "fps": 30,
+  "pixel_format": "jpeg->bgr8",
+  "auto_exposure": null,
+  "autofocus": null,
+  "driver_rectified": false
+ },
+ "notes": "棋盘180deg翻转按相邻格亮度规范化；双目仅用双侧消歧可信的对。头部底部1/4视场被桌面/自身遮挡无法覆盖，K/dist在该区域为外推（畸变很小，预计亚像素级）。腕相机AF不可关：fx随对焦距离漂移约2%%(0.65m vs 0.9m实测)，sigma已按2xstd放宽以覆盖；近距离使用时fx预计偏大~1%%，由identify --refine-intrinsics吸收。头/腕底部视场受桌面/自身遮挡区域为外推。",
+ "created": "2026-10-16T03:51:44+00:00",
+ "zmq_port": 55557,
+ "name_fix": "2026-10-16: wrist camera names corrected. Port 55557 = LEFT wrist, 55556 = RIGHT wrist (verified by jogging left wrist_yaw). g1d_infra cam config names them the other way round. This file was computed from port 55557 images, previously saved as camera_intrinsics_right_wrist.json."
+}

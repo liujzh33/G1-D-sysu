@@ -1,0 +1,44 @@
+# Unitree G1-D left arm + Dex1-1 gripper (G1DLeft). Copied to Assets/Robots/g1d/ by build_asset.py.
+urdf_path: "./g1d_dex1.urdf"
+ee_joints: "left_wrist_yaw_joint"
+ee_link: "left_dex1_base_link"
+ee_type: "gripper"
+base_link: "torso_link"
+arm_joints_name: ['left_shoulder_pitch_joint', 'left_shoulder_roll_joint', 'left_shoulder_yaw_joint', 'left_elbow_joint',
+                  'left_wrist_roll_joint', 'left_wrist_pitch_joint', 'left_wrist_yaw_joint']
+gripper_joints_name: ['left_dex1_finger_joint_1', 'left_dex1_finger_joint_2']
+gripper_move:
+    base: "left_dex1_finger_joint_1"
+    sign: -1.0  # Dex1-1: positive q closes
+    mimic: ["left_dex1_finger_joint_2", 1., 0.]
+gripper_bias: 0.12              # dex1_base_link origin -> fingertip centre (m)
+gripper_scale: [-0.02, 0.0245]  # finger travel: open .. closed
+delta_matrix: [[1,0,0],[0,1,0],[0,0,1]]
+grasp_camera_reference_axis: [1, 0, 0]
+# Intrinsics are checkerboard-calibrated (env_cfg/camera/template.py); mounts were checked by projecting the robot meshes
+# at recorded joint angles onto real frames (median error 2-7 px at 640x480).
+# ori is a wxyz quaternion from the link frame (x forward, z up) to the USD camera (-z forward, +y up).
+camera:
+  -
+    link: "head_link"
+    name: "cam_head"  # left eye of the head stereo pair, as in the real training recordings
+    type: g1d_head
+    mesh: pinhole
+    # Unitree camera contract (service console 031354): eyes 29.8 mm either side, 47.6 deg down. The chest edge and
+    # the grippers land within ~3 px of the real frames; the lens sits inside the head shell (near plane, g1d_head).
+    pos: [0.0442, 0.0296, 0.4900]
+    ori: [0.6593, 0.2557, -0.2557, -0.6593]
+  -
+    link: "head_link"
+    name: "cam_head_right"  # right eye
+    type: g1d_head
+    mesh: pinhole
+    pos: [0.0442, -0.0300, 0.4900]
+    ori: [0.6593, 0.2557, -0.2557, -0.6593]
+  -
+    link: "left_dex1_base_link"
+    name: "cam_wrist"
+    type: dex1_rgb
+    mesh: pinhole
+    pos: [0.0627, 0, 0.0555]  # Unitree camera contract (service console 031354); matches real finger silhouettes
+    ori: [0.6124, 0.3536, -0.3536, -0.6124]  # looks along the fingers, 30 deg down

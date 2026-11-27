@@ -1,0 +1,197 @@
+{
+ "frame": "Z-up, meters; origin on the floor under the tabletop centre; +X along the table; +Y away from the robot",
+ "tape": {
+  "table_length": 1.1,
+  "table_width": 0.6,
+  "table_top_z": 0.758,
+  "waist_top_above_plate": 0.485,
+  "lift_reading": [
+   0.07,
+   0.145
+  ],
+  "far_edge_to_waist_back": 0.81,
+  "far_edge_to_waist_front": 0.66,
+  "left_end_to_waist_centre": 0.565,
+  "grommet_from_right_end": [
+   0.404,
+   0.7
+  ],
+  "grommet_from_near_edge": [
+   0.43,
+   0.548
+  ],
+  "target_box_from_right_end": [
+   0.407,
+   0.615
+  ],
+  "target_box_from_near_edge": [
+   0.2,
+   0.263
+  ],
+  "date": "2026-11-19"
+ },
+ "table": {
+  "top_z": 0.758,
+  "length": 1.1,
+  "width": 0.6,
+  "front_y": -0.3,
+  "thick": 0.025
+ },
+ "robot": {
+  "root_xy": [
+   0.015,
+   -0.4572
+  ],
+  "root_z": 0.1055,
+  "heading_deg": 90.0,
+  "quat_wxyz": [
+   0.7071,
+   0.0,
+   0.0,
+   0.7071
+  ],
+  "lift_total": 0.0,
+  "init_joint_pos": {
+   "LZ_mt_Joint": 0.0,
+   "LZ_it_Joint": 0.0
+  },
+  "table_edge_from_root": 0.1572,
+  "table_centre_x_from_root": -0.015,
+  "checks": {
+   "far_edge_from_root_via_waist_back": 0.7547,
+   "far_edge_from_root_via_waist_front": 0.7597,
+   "waist_back_x": -0.0553,
+   "waist_front_x": 0.0997,
+   "plate_top_z": 0.195,
+   "waist_top_z": 0.686,
+   "waist_top_below_table_top": 0.072,
+   "urdf_waist_over_plate_at_zero_lift": 0.491,
+   "root_drop_below_nominal": 0.006,
+   "real_lift_from_reading": 0.075
+  }
+ },
+ "legs": {
+  "post": [
+   0.05,
+   0.05
+  ],
+  "end_inset": 0.06,
+  "edge_inset": 0.04,
+  "foot_h": 0.03,
+  "rail_h": 0.05,
+  "beam": [
+   0.03,
+   0.05
+  ]
+ },
+ "grommet": {
+  "length": 0.296,
+  "width": 0.118,
+  "far_inset": 0.052,
+  "x": -0.002,
+  "slot_w": 0.012,
+  "rim": 0.008
+ },
+ "target_box": {
+  "x": [
+   -0.065,
+   0.143
+  ],
+  "y": [
+   -0.1,
+   -0.037
+  ],
+  "line_w": 0.005
+ },
+ "screen": {
+  "back_gap": 0.45,
+  "half_width": 1.0,
+  "front_y": -0.45,
+  "height": 2.3,
+  "sweep": 0.12,
+  "bend_r": 0.06,
+  "tube": 0.025,
+  "panels": [
+   [
+    "left",
+    [
+     -1.0,
+     -0.45
+    ],
+    [
+     -1.0,
+     0.75
+    ]
+   ],
+   [
+    "back",
+    [
+     -1.0,
+     0.75
+    ],
+    [
+     1.0,
+     0.75
+    ]
+   ],
+   [
+    "right",
+    [
+     1.0,
+     0.75
+    ],
+    [
+     1.0,
+     -0.45
+    ]
+   ]
+  ]
+ },
+ "room": {
+  "x0": -1.8,
+  "x1": 2.4,
+  "y0": -2.6,
+  "y1": 1.9,
+  "height": 2.8
+ },
+ "curtain": {
+  "x": -1.6800000000000002,
+  "y0": -2.2,
+  "y1": 1.6,
+  "z0": 0.55,
+  "z1": 2.7
+ },
+ "lights": {
+  "panels": [
+   [
+    -0.9,
+    -0.9
+   ],
+   [
+    0.9,
+    -0.9
+   ],
+   [
+    -0.9,
+    0.7
+   ],
+   [
+    0.9,
+    0.7
+   ]
+  ],
+  "size": [
+   1.2,
+   0.3
+  ],
+  "intensity": 26000.0,
+  "color_temperature": 6000.0,
+  "dome": 150.0
+ },
+ "layers": {
+  "scene": "scene.usda",
+  "background": "background.usda",
+  "table": "table.usda",
+  "lights": "lights.usda"
+ }
+}

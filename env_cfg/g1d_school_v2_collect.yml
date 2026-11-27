@@ -1,0 +1,22 @@
+# Collection profile of the tape-measured school table (g1d_school_v2): as g1d_school_collect (head depth, measured
+# gripper state) plus the third-person camera; keeps the g1d_school_v2 layout and result namespace.
+config_name: g1d_school_v2
+
+config:
+  sim: g1d_sim_config
+  scene: default
+  robot: g1d_school_v2
+  camera: g1d_school_v2_collect_camera
+
+observation:
+  collect_freq: 30
+  robot:
+    joint_states: true
+    world_ee_state: true
+    ee_state: measured  # gripper state from the finger joints, not the last command (scripts/datagen/CONTRACT.md)
+  vision:
+    approximate_depth: false
+    depth: true
+    intrinsic_matrix: false
+    extrinsic_matrix: false
+    shape: true

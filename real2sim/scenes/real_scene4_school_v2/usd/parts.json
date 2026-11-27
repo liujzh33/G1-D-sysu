@@ -1,0 +1,166 @@
+{
+ "scene": "real_scene4_school_v2",
+ "room": "real_scene4_v2",
+ "top_z": 0.758,
+ "roles": {
+  "floor": {
+   "parts": [
+    {
+     "path": "Background/Floor",
+     "material": "floor",
+     "uv_m": 0.6
+    }
+   ],
+   "materials": [
+    {
+     "name": "floor",
+     "color": null,
+     "texture": "real2sim/scenes/real_scene4_school_v2/usd/textures/floor_tile.png",
+     "roughness": 0.35,
+     "metallic": 0.0,
+     "tile_m": 0.6
+    }
+   ]
+  },
+  "wall": {
+   "parts": [
+    {
+     "path": "Background/Walls/left",
+     "material": "wall",
+     "uv_m": 1.0
+    },
+    {
+     "path": "Background/Walls/front",
+     "material": "wall",
+     "uv_m": 1.0
+    },
+    {
+     "path": "Background/Walls/right",
+     "material": "wall",
+     "uv_m": 1.0
+    },
+    {
+     "path": "Background/Walls/back",
+     "material": "wall",
+     "uv_m": 1.0
+    }
+   ],
+   "materials": [
+    {
+     "name": "wall",
+     "color": [
+      0.7529,
+      0.7529,
+      0.7157
+     ],
+     "texture": null,
+     "roughness": 0.9,
+     "metallic": 0.0,
+     "tile_m": 1.0
+    }
+   ]
+  },
+  "tabletop": {
+   "parts": [
+    {
+     "path": "Table/Top/board",
+     "material": "board",
+     "uv_m": 0.885
+    },
+    {
+     "path": "Table/Top/edges",
+     "material": "board_edge",
+     "uv_m": null
+    }
+   ],
+   "materials": [
+    {
+     "name": "board",
+     "color": null,
+     "texture": "real2sim/scenes/real_scene4_school_v2/usd/textures/board.png",
+     "roughness": 0.5,
+     "metallic": 0.0,
+     "tile_m": 0.885
+    },
+    {
+     "name": "board_edge",
+     "color": [
+      0.5776,
+      0.491,
+      0.3712
+     ],
+     "texture": null,
+     "roughness": 0.5,
+     "metallic": 0.0,
+     "tile_m": null
+    }
+   ]
+  }
+ },
+ "lift": {
+  "top_z": 0.758,
+  "split_z": 0.379,
+  "range": [
+   0.62,
+   1.27
+  ],
+  "move": [
+   "Table/Top/board",
+   "Table/Top/edges",
+   "Table/Colliders/top",
+   "Table/Colliders/Legs_pos_rail",
+   "Table/Colliders/Legs_neg_rail",
+   "Table/Colliders/Frame_beam",
+   "Table/Grommet/frame",
+   "Table/Grommet/slot",
+   "Table/Grommet/lid",
+   "Table/TargetBox/tape",
+   "Table/Legs/pos/rail",
+   "Table/Legs/neg/rail",
+   "Table/Frame/beam"
+  ],
+  "stretch": [
+   [
+    "Table/Colliders/Legs_pos_post_front",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Colliders/Legs_pos_post_back",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Colliders/Legs_neg_post_front",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Colliders/Legs_neg_post_back",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Legs/pos/post_front",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Legs/pos/post_back",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Legs/neg/post_front",
+    0.03,
+    0.683
+   ],
+   [
+    "Table/Legs/neg/post_back",
+    0.03,
+    0.683
+   ]
+  ]
+ },
+ "fixed_reason": null
+}

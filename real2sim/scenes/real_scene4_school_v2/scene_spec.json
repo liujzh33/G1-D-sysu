@@ -1,0 +1,29 @@
+{
+  "scene": "real_scene4_school_v2",
+  "name": "学校实验室绿幕桌（实测重建）",
+  "env_cfg": "g1d_school_v2",
+  "photos": ["reference/*.jpg"],
+  "reconstruction": "tape-measured tabletop and robot stand (2026-11-19, data/sim_scene/image); table frame, cable grommet, U-shaped green screen and room by eye from the walk-around video 环境.mp4 (frames in reference/video_*.jpg); robot stand derived from the g1d_v4 URDF chain and meshes (build_scene.py robot_stand, PLAN.md)",
+  "scale_basis": "tape: tabletop 110 x 60 x 75.8 cm; waist top 48.5 cm over the column base plate; far edge to waist back 81 cm, to waist front 66 cm; waist centre 56.5 cm from the left end; grommet position",
+  "measurements": {
+    "table_top_z": {"value_m": 0.758, "tool": "卷尺", "date": "2026-11-19"},
+    "table_length": {"value_m": 1.10, "tool": "卷尺", "date": "2026-11-19"},
+    "table_width": {"value_m": 0.60, "tool": "卷尺", "date": "2026-11-19"},
+    "table_edge_from_robot_root": {"value_m": 0.157, "tool": "卷尺（经 URDF 腰部前后沿换算）", "date": "2026-11-19"},
+    "table_centre_x_from_robot_root": {"value_m": -0.015, "tool": "卷尺（腰部中线离左端 56.5 cm）", "date": "2026-11-19"}
+  },
+  "robot_measurements": {
+    "waist_top_above_plate": {"value_m": 0.485, "tool": "卷尺", "date": "2026-11-19", "photo": "reference/height_485_waist_top.jpg"},
+    "lift_reading_lowest_to_now": {"value_m": [0.07, 0.145], "tool": "卷尺（腰部盒顶到外立柱顶）", "date": "2026-11-19"},
+    "far_edge_to_waist_back": {"value_m": 0.81, "tool": "卷尺", "date": "2026-11-19"},
+    "far_edge_to_waist_front": {"value_m": 0.66, "tool": "卷尺", "date": "2026-11-19"},
+    "left_end_to_waist_centre": {"value_m": 0.565, "tool": "卷尺", "date": "2026-11-19", "photo": "reference/stand_565_from_left.jpg"},
+    "grommet_from_right_end": {"value_m": [0.404, 0.700], "tool": "卷尺", "date": "2026-11-19"},
+    "grommet_from_near_edge": {"value_m": [0.430, 0.548], "tool": "卷尺", "date": "2026-11-19"},
+    "target_box_from_right_end": {"value_m": [0.407, 0.615], "tool": "卷尺", "date": "2026-11-19"},
+    "target_box_from_near_edge": {"value_m": [0.200, 0.263], "tool": "卷尺", "date": "2026-11-19"}
+  },
+  "overlay": [],
+  "lighting": {"status": "estimated", "note": "not recorded; four ceiling panels 6000 K, neutral walls and ceiling"},
+  "notes": "Not measured: chassis yaw (taken square), floor to plate top (URDF chassis assumed), screen distances, table frame sizes. The URDF lift column is ~6 mm taller at zero lift than the real waist height, so lift 0 and root 6 mm low (PLAN.md)."
+}

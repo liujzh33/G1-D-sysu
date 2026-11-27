@@ -1,0 +1,38 @@
+robots:
+  - {
+    robot_type: arm,
+    robot_name: g1d,
+    coupled: True,
+    need_planner: False,
+    # Tape-measured stand (real2sim/scenes/real_scene4_school_v2/usd/build_params.json `robot`, PLAN.md): far table edge
+    # 0.81 m from the back of the waist and 0.66 m from its front, i.e. the near edge 0.157 m ahead of the root; waist
+    # centre 56.5 cm from the robot's left table end (1.5 cm right of the table centre); chassis square to the table.
+    # With the Room at [-0.015, -0.30, 0] the near edge is at y=-0.60 and the root at (0, -0.757).
+    # The real head view (g1-d-sysu episode 36, table / tape / grommet corners against the refitted head mount below,
+    # runs/school_v2/stand_fit.py) puts the robot 3.2 cm further to its left and turned 0.78 deg to its right; the
+    # depth and height agree with the tape.
+    default_root_pos: [-0.032, -0.7572, 0.1055],
+    default_root_rot: [0.7119, 0, 0, 0.70228],
+    # Head stereo refitted on this robot: arm and gripper outlines (FK at the recorded joints) against the real color_0
+    # edges of episode 36 (runs/school_v2/head_arm_overlay.py --fit), 50.8 deg down and 2.5 deg left instead of the
+    # contract's 47.6 / 0; outline error 3.8 -> 2.6 px there and 4.0 -> 2.8 px on episode 34 (not fitted). Calibrated
+    # intrinsics with the principal point; the lens distortion is added by scripts/datagen/camera_model.py.
+    camera_override: {
+      cam_head: {type: g1d_calib_head_left, pos: [0.0421, 0.0272, 0.4904], ori: [0.6727, 0.2453, -0.2291, -0.6594]},
+      cam_head_right: {type: g1d_calib_head_right, pos: [0.0421, -0.0324, 0.4904], ori: [0.6727, 0.2453, -0.2291, -0.6594]}
+    },
+    # Waist top measured 0.485 m over the black column base plate with the lift raised 7.5 cm from its lowest (reading
+    # 7 -> 14.5 cm). The URDF column is longer: at zero lift its waist top is already 0.491 m over the plate. So the lift
+    # stays at 0 and the root sits 6 mm under its nominal 0.1115 (wheels 6 mm into the floor), which puts the waist,
+    # torso, arms and cameras at the measured height (waist top 0.686 m, 0.072 m under the 0.758 m tabletop).
+    # Arms at g1d_school's start (mean first frame of the real teleop data).
+    init_joint_pos: {
+      LZ_mt_Joint: 0.0, LZ_it_Joint: 0.0,
+      left_shoulder_pitch_joint: 0.194, left_shoulder_roll_joint: -0.046, left_shoulder_yaw_joint: -0.214,
+      left_elbow_joint: -0.315, left_wrist_roll_joint: -0.029, left_wrist_pitch_joint: -0.249,
+      left_wrist_yaw_joint: 0.119,
+      right_shoulder_pitch_joint: 0.201, right_shoulder_roll_joint: 0.026, right_shoulder_yaw_joint: 0.158,
+      right_elbow_joint: -0.308, right_wrist_roll_joint: 0.026, right_wrist_pitch_joint: -0.280,
+      right_wrist_yaw_joint: 0.055
+    }
+  }
