@@ -1,0 +1,24 @@
+# G1-D builds a seven-block house from the wooden blocks (Assets/Object/Blocks) in the green-screen school lab. Eval and
+# datagen layouts come from scripts/g1d/build_house_layouts.py (house blocks, supply spots and distractors; the target
+# shape is the layout's BuildShape entry, see scripts/g1d/build_shapes.py). The section below only lists the blocks.
+Rigid:
+  -
+    common:
+      xlim: [-0.3, 0.3]
+      ylim: [-0.585, -0.42]
+      rotate_rand: False
+      relative_plane: "Table"
+
+    category:
+      -
+        name: "wood_block_cube"
+        index: [0, 1, 2, 4, 5, 6, 7]
+      -
+        name: "wood_block_arch"
+        index: [0, 1, 2, 4, 5, 6, 7]
+      -
+        name: "wood_block_cuboid"
+        index: [0, 1, 2, 4, 5, 6, 7]
+      -
+        name: "wood_block_prism"
+        index: [0, 1, 2, 4, 5, 6, 7]

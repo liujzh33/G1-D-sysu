@@ -89,6 +89,25 @@ if self.camera and overrides:
             cam[key] = list(value) if hasattr(value, "__len__") and not isinstance(value, str) else value
 ```
 
+## 任务：四块积木怎样算搭成功，以及测试布局
+
+成功判定在 `task/RoboDojo/tasks/g1d_build_house.py`。它读布局里的 `BuildShape`，调用 `scripts/g1d/build_shapes.py` 的 `built()`：每一块都在目标的位置、高度、朝向、倾斜容差内，并且两只手臂回到起始姿态，这一步才算成功。积木种类列在 `task/RoboDojo/config/g1d_build_house.yml`。house4 的四块（红方块、原木拱形、蓝方块、橙色屋顶）和容差、中英文指令都在 `build_shapes.py`。
+
+采集时的验收是同一套几何条件，写在 `scripts/datagen/plugins/g1d_build_house.py`（`house_built_v1`）：专家轨迹跑完，并且房子连续保持 30 帧。子任务、目标框、接触、阶段和 0–1 进度也由这个插件写出，进度定义在 `scripts/g1d/house4_progress.py`。专家动作在 `scripts/g1d/scripted_demo.py`，手和身体的间距检查在 `scripts/g1d/clearance.py`。
+
+新的测试或训练布局用 `scripts/g1d/build_house4_layouts.py` 生成。它依赖：
+
+| 文件 | 作用 |
+|---|---|
+| `scripts/g1d/build_shapes.py` | 房子形状、目标位姿、可达性和搭成判定 |
+| `scripts/g1d/build_house_layouts.py` | 积木条目、占地、上层支撑顺序 |
+| `scripts/g1d/reach_map.py` | 用 URDF 检查这只手够不够得到 |
+| `scripts/g1d/build_asset.py` | `SCENES["g1d_school_v2"]` 和房间条目 |
+| `scripts/g1d/school_v2_variants.py` | 从 `real_scene4_v2` 生成 64 套灯光和桌面变体 |
+| `scripts/datagen/camera_model.py` | 采集时按真机统计加曝光、噪声和头相机畸变 |
+
+这些文件按同样的相对路径放进 RoboDojo 仓库。`scripted_demo.py` 还要用 RoboDojo 里已有的 `env/` 和 `scripts/objects/`，本仓库不重复带那些通用模块。
+
 使用哪个配置：
 
 | 用途 | `--env-cfg` |
